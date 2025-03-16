@@ -1,5 +1,16 @@
+### IntelliJ IDEA ###
+.idea/
+out/
+!**/src/main/**/out/
+!**/src/test/**/out/
+
+### Mac OS ###
+.DS_Store
+
+# Compiled class files
 *.class
 
+# Log files
 *.log
 
 # BlueJ files
@@ -8,6 +19,7 @@
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
+# Package files
 *.jar
 *.war
 *.nar
@@ -16,5 +28,9 @@
 *.tar.gz
 *.rar
 
+# Virtual machine crash logs (Java)
 hs_err_pid*
 replay_pid*
+
+# Maven and Gradle directories
+target/
