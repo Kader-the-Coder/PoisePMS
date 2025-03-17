@@ -25,12 +25,12 @@
 
 ### Setting Up MySQL Database
 1. **Download and Install MySQL**:
-    - Download the MySQL Community Server from [here](https://dev.mysql.com/downloads/mysql/).
-    - Follow the installation instructions for your operating system.
+   - Download the MySQL Community Server from [here](https://dev.mysql.com/downloads/mysql/).
+   - Follow the installation instructions for your operating system.
 
 2. **Start the MySQL Server**:
-    - On Windows: Use the MySQL Command Line Client or MySQL Workbench to start the server.
-    - On macOS/Linux: Use the terminal to start the MySQL server (e.g., `sudo service mysql start`).
+   - On Windows: Use the MySQL Command Line Client or MySQL Workbench to start the server.
+   - On macOS/Linux: Use the terminal to start the MySQL server (e.g., `sudo service mysql start`).
 
 3. **Initialize the Database Using Provided SQL Files**:
    - Locate the `init_database` folder in the project directory.
@@ -47,22 +47,45 @@
    - Replace `path/to/` with the actual path to the `init_database` folder.
 
 4. **Verify Database Initialization**:
-    - Check that the necessary tables and initial data have been created by running:
-      ```sql
-      SHOW TABLES;
-      SELECT * FROM your_table_name;
-      ```
+   - Check that the necessary tables and initial data have been created by running:
+     ```sql
+     SHOW TABLES;
+     SELECT * FROM your_table_name;
+     ```
 
 5. **Configure Database Connection in Your Project**:
-    - Locate the configuration file (or the `DatabaseManager` class in your project).
-    - Update the database connection details:
-      ```java
-      String url = "jdbc:mysql://localhost:3306/poise_pms";
-      String username = "your_username";
-      String password = "your_password";
-      ```
+   - Locate the configuration file (or the `DatabaseManager` class in your project).
+   - Update the database connection details:
+     ```java
+     String url = "jdbc:mysql://localhost:3306/poise_pms";
+     String username = "your_username";
+     String password = "your_password";
+     ```
 
-### General Project Setup
+### Configuring MySQL Connector (`mysql-connector-j-x.y.z.jar`)
+To ensure the project connects to MySQL successfully, you need to add the MySQL Connector JAR (`mysql-connector-j-x.y.z.jar`) to your project's classpath. Below are setup instructions for different IDEs:
+
+#### **IntelliJ IDEA**
+1. Download the MySQL Connector JAR from [here](https://dev.mysql.com/downloads/connector/j/).
+2. Go to **File** → **Project Structure** → **Libraries**.
+3. Click **+ (Add)** → **Java** and select the downloaded JAR file.
+4. Apply changes and restart IntelliJ if needed.
+
+#### **Eclipse**
+1. Right-click your project in the **Package Explorer**.
+2. Select **Build Path** → **Configure Build Path**.
+3. Under the **Libraries** tab, click **Add External JARs...**.
+4. Choose the MySQL Connector JAR and click **Apply and Close**.
+
+#### **VS Code**
+1. Ensure you have the **Java Extension Pack** installed.
+2. Place the `mysql-connector-j-x.y.z.jar` inside a `lib/` folder within your project.
+3. Update your **launch.json** or use the following command to run your project with the JAR:
+   ```bash
+   java -cp "lib/mysql-connector-j-x.y.z.jar:bin" Main
+   ```
+
+## General Project Setup
 1. Clone the repository:
    ```
    git clone https://github.com/Kader-the-Coder/PoisePMS.git
