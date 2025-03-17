@@ -45,7 +45,9 @@ public class ProjectFinder {
       }
 
       List<Project> projects = readProjects("AND", condition);
-      displayProjectsTable(projects, DIVIDER_WIDTH, "Project Name");
+      displayProjectsTable(projects, DIVIDER_WIDTH,
+        "Project Name", "Building Type", "Physical Address", "ERF No.",
+        "Total Fee", "Start Date", "Deadline", "Customer");
       return projects;
     }
   }

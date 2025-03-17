@@ -94,7 +94,7 @@ public class Create {
       default -> throw new IllegalArgumentException("Invalid role: " + role);
     };
 
-    // SQL query to insert a new project
+    // SQL query to insert a new customer
     String insertQuery =
       "INSERT INTO " +
       tableName +

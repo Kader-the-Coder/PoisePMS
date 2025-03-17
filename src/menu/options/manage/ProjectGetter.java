@@ -23,7 +23,9 @@ public class ProjectGetter {
   public static List<Project> getIncompleteProjects() {
     System.out.println("Incomplete projects...");
     List<Project> projects = readProjects("AND", "Finalised = FALSE");
-    DisplayProjects.displayProjectsTable(projects, DIVIDER_WIDTH, "Project Name", "Building Type", "Deadline");
+    DisplayProjects.displayProjectsTable(projects, DIVIDER_WIDTH,
+      "Project Name", "Building Type", "Physical Address", "ERF No.",
+      "Total Fee", "Start Date", "Deadline", "Customer");
     return projects;
   }
 
@@ -36,7 +38,9 @@ public class ProjectGetter {
   public static List<Project> getProjectsPastDeadline() {
     System.out.println("Projects past deadline");
     List<Project> projects = readProjects("AND", "CURRENT_DATE > Deadline", "Finalised = FALSE");
-    DisplayProjects.displayProjectsTable(projects, DIVIDER_WIDTH, "Project Name", "Building Type", "Deadline");
+    DisplayProjects.displayProjectsTable(projects, DIVIDER_WIDTH,
+      "Project Name", "Building Type", "Physical Address", "ERF No.",
+      "Total Fee", "Start Date", "Deadline", "Customer");
     return projects;
   }
 
@@ -47,7 +51,7 @@ public class ProjectGetter {
    * @return A list of projects with unassigned people.
    */
   public static List<Project> getProjectsWithUnassignedPeople() {
-    System.out.println("Projects past deadline");
+    System.out.println("Projects with unassigned people");
     List<Project> projects = readProjects(
       "OR",
       "EngineerID is NULL",
@@ -57,8 +61,9 @@ public class ProjectGetter {
       "CustomerID is NULL"
     );
     DisplayProjects.displayProjectsTable(projects, DIVIDER_WIDTH,
-      "Project Name", "Manager", "Engineer", "Architect", "Contractor", "Customer", "Deadline"
-    );
+      "Project Name", "Building Type", "Physical Address", "ERF No.",
+      "Total Fee", "Start Date", "Deadline",
+      "Engineer", "Manager", "Architect", "Contractor", "Customer");
     return projects;
   }
 }

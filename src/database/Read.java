@@ -106,24 +106,24 @@ public class Read {
     // If exactly one record is found
     if (results.size() == 1) {
       Map<String, Object> result = results.getFirst();
-      String name = (String) result.get("name");
+      String name = (String) result.get("Name");
       String telephoneNumber = (String) result.get("TelephoneNumber");
       String emailAddress = (String) result.get("EmailAddress");
       String physicalAddress = (String) result.get("PhysicalAddress");
 
-      if (clazz == Engineer.class) {
+      if (Engineer.class.isAssignableFrom(clazz)) {
         return clazz.cast(new Engineer(id, name, telephoneNumber, emailAddress, physicalAddress));
       }
-      else if (clazz == Manager.class) {
+      else if (Manager.class.isAssignableFrom(clazz)) {
         return clazz.cast(new Manager(id, name, telephoneNumber, emailAddress, physicalAddress));
       }
-      else if (clazz == Architect.class) {
+      else if (Architect.class.isAssignableFrom(clazz)) {
         return clazz.cast(new Architect(id, name, telephoneNumber, emailAddress, physicalAddress));
       }
-      else if (clazz == Contractor.class) {
+      else if (Contractor.class.isAssignableFrom(clazz)) {
         return clazz.cast(new Contractor(id, name, telephoneNumber, emailAddress, physicalAddress));
       }
-      else if (clazz == Customer.class) {
+      else if (Customer.class.isAssignableFrom(clazz)) {
         return clazz.cast(new Customer(id, name, telephoneNumber, emailAddress, physicalAddress));
       }
     }
@@ -221,7 +221,7 @@ public class Read {
     List<Map<String, Object>> results;
     if (!excludedPersonIDs.isEmpty()) {
       String placeholders = String.join(",", Collections.nCopies(excludedPersonIDs.size(), "?"));
-      query += " WHERE id NOT IN (" + placeholders + ")";
+      query += " WHERE " + idName + " NOT IN (" + placeholders + ")";
       results = DatabaseManager.executeQuery(query, excludedPersonIDs.toArray());
     } else {
       results = DatabaseManager.executeQuery(query);
